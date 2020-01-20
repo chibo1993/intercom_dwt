@@ -128,7 +128,10 @@ class Intercom_DWT(Intercom_empty):
         axs[bitplane//skipped_bitplanes-2].set_ylable('Amplitud')
         
         print("Coefficient\t   Energy")
-
+        # Las funciones básicas se crean calculando el DWt inverso de
+        # un espectro DWT donde todos los coeficientes son cero excepto uno de
+        # ellos. Dependiendo de la posición de dicho coeficiente, un diferente
+        # Se obtiene la función base.
         zeros = np.zeros(bitplane)
         coeffs = wt.wavedec(zeros, wavelet=wavelet, level=levels, mode=padding)
         arr, coeff_slices = wt.coeffs_to_array(coeffs)
